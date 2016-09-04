@@ -1,4 +1,4 @@
-package scratchlab.com.ph.medicinereminder;
+package scratchlab.com.ph.medicinereminder.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,16 +10,18 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
+import scratchlab.com.ph.medicinereminder.extras.Information;
+import scratchlab.com.ph.medicinereminder.R;
+
 /**
  * Created by airap on 11/06/2016.
  */
 public class ApolAdapter extends RecyclerView.Adapter<ApolAdapter.MyViewHolder>{
 
-
     List<Information> data = Collections.emptyList();
     private LayoutInflater inflater;
 
-    //construtor for layout inflater
+    //constructor for layout inflater
     public ApolAdapter(Context context, List<Information> data){
         inflater = LayoutInflater.from(context);
         this.data = data;
@@ -36,8 +38,8 @@ public class ApolAdapter extends RecyclerView.Adapter<ApolAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Information current=data.get(position);
-        holder.title.setText(current.title);
-        holder.icon.setImageResource(current.iconId);
+        holder.title.setText(current.getTitle());
+        holder.icon.setImageResource(current.getIconId());
     }
 
     @Override

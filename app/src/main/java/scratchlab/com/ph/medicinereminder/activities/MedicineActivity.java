@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import scratchlab.com.ph.medicinereminder.NavigationDrawerFragment;
+import scratchlab.com.ph.medicinereminder.fragments.NavigationDrawerFragment;
 import scratchlab.com.ph.medicinereminder.R;
 
 public class MedicineActivity extends AppCompatActivity {

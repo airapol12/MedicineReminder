@@ -1,4 +1,4 @@
-package scratchlab.com.ph.medicinereminder;
+package scratchlab.com.ph.medicinereminder.extras;
 
 /**
  * Created by airap on 11/06/2016.

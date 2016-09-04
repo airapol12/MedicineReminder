@@ -1,4 +1,4 @@
-package scratchlab.com.ph.medicinereminder;
+package scratchlab.com.ph.medicinereminder.fragments;
 
 
 import android.content.Context;
@@ -20,9 +20,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import scratchlab.com.ph.medicinereminder.ApolAdapter;
-import scratchlab.com.ph.medicinereminder.Information;
 import scratchlab.com.ph.medicinereminder.R;
+import scratchlab.com.ph.medicinereminder.adapters.ApolAdapter;
+import scratchlab.com.ph.medicinereminder.extras.Information;
 
 
 /**
@@ -97,8 +97,8 @@ public class NavigationDrawerFragment extends Fragment{
         for(int i=0;i<titles.length && i<icons.length;i++)
         {
             Information current = new Information();
-            current.iconId = icons[i];
-            current.title = titles[i];
+            current.setIconId(icons[i]);
+            current.setTitle(titles[i]);
             data.add(current);
         }
         return data;

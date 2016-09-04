@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import scratchlab.com.ph.medicinereminder.activities.SettingsActivity;
+import scratchlab.com.ph.medicinereminder.fragments.NavigationDrawerFragment;
 
 public class MainActivity extends AppCompatActivity {
 

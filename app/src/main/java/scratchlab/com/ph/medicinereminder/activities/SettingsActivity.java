@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import scratchlab.com.ph.medicinereminder.NavigationDrawerFragment;
+import scratchlab.com.ph.medicinereminder.fragments.NavigationDrawerFragment;
 import scratchlab.com.ph.medicinereminder.R;
 
 public class SettingsActivity extends AppCompatActivity {
