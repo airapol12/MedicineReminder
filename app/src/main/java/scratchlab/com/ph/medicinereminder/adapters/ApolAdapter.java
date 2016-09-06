@@ -30,7 +30,7 @@ public class ApolAdapter extends RecyclerView.Adapter<ApolAdapter.MyViewHolder>{
     //3 methods(onCreateViewHolder, onBindViewHolder and getItemCount is automatically generated when we extends to RecyclerView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.custom_row, parent, false);
+        View view = inflater.inflate(R.layout.drawer_list_item, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }

@@ -2,6 +2,7 @@ package scratchlab.com.ph.medicinereminder.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,7 +21,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import scratchlab.com.ph.medicinereminder.MainActivity;
 import scratchlab.com.ph.medicinereminder.R;
+import scratchlab.com.ph.medicinereminder.activities.MedicineActivity;
 import scratchlab.com.ph.medicinereminder.adapters.ApolAdapter;
 import scratchlab.com.ph.medicinereminder.extras.Information;
 
@@ -73,11 +76,24 @@ public class NavigationDrawerFragment extends Fragment{
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //PART of STEP2 TECHINIQUE3
+        //PART of STEP2 TECHNIQUE3
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
+
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getActivity(), "onClick "+position, Toast.LENGTH_SHORT).show();
+
+                switch (position){
+                    case 0:
+                        startActivity(new Intent(getActivity(), MainActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(getActivity(), MedicineActivity.class));
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                }
             }
 
             @Override
@@ -92,7 +108,7 @@ public class NavigationDrawerFragment extends Fragment{
         List<Information> data = new ArrayList<>();
         int[] icons = {R.drawable.ic_number1,R.drawable.ic_number2,
                 R.drawable.ic_number3, R.drawable.ic_number4};
-        String[] titles = {"Medicine Box", "Medicines", "Peras", "Pakwan"};
+        String[] titles = {"Medicine Box", "Medicines", "Appointments", "Measurements"};
 
         for(int i=0;i<titles.length && i<icons.length;i++)
         {
@@ -153,7 +169,7 @@ public class NavigationDrawerFragment extends Fragment{
     }
 
 //Interface used for modifying values in a SharedPreferences object. Using apply() Commit your preferences changes back
-// from this Editor to the SharedPreferences object it is editing. This automically performs the requested modifications,
+// from this Editor to the SharedPreferences object it is editing. This automatically performs the requested modifications,
 // replacing whatever is currently in the SharedPreferences.
     public static  void saveToPreferences (Context context, String preferenceName, String preferenceValue){
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
@@ -166,7 +182,7 @@ public class NavigationDrawerFragment extends Fragment{
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(preferenceName, defaultValue);
     }
-    //Start of tehnique3 for recyclerview itemclick
+    //Start of technique3 for recyclerview itemclick
     //Step1 Create a class that EXTENDS RecyclerView.OnItemTouchListener
     static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
 

@@ -16,12 +16,10 @@
         android:background="#FB8C00"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="280dp"
-            android:layout_height="140dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="@dimen/drawer_margin_top"
-            android:src="@drawable/ic_abstract"/>
+        <include
+            android:id="@id/navigation_header_container"
+            layout="@layout/header">
+        </include>
 
     </LinearLayout>
 
@@ -31,5 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
+
 
 </RelativeLayout>
