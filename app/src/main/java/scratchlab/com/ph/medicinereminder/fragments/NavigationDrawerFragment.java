@@ -1,11 +1,13 @@
 package scratchlab.com.ph.medicinereminder.fragments;
 
-
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,9 +23,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 import scratchlab.com.ph.medicinereminder.MainActivity;
 import scratchlab.com.ph.medicinereminder.R;
-import scratchlab.com.ph.medicinereminder.activities.MedicineActivity;
 import scratchlab.com.ph.medicinereminder.adapters.ApolAdapter;
 import scratchlab.com.ph.medicinereminder.extras.Information;
 
@@ -42,6 +46,7 @@ public class NavigationDrawerFragment extends Fragment{
     private DrawerLayout mDrawerLayout;
 
     private ApolAdapter adapter;
+    FragmentTransaction ft;
 
     //2 boolean variables to indicate whether the user is aware of the drawer being started
     //from the very first time or is coming back from a rotation
@@ -76,24 +81,39 @@ public class NavigationDrawerFragment extends Fragment{
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        ft = getFragmentManager().beginTransaction();
+
         //PART of STEP2 TECHNIQUE3
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
 
             @Override
             public void onClick(View view, int position) {
+                FragmentManager fm= getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
 
                 switch (position){
                     case 0:
-                        startActivity(new Intent(getActivity(), MainActivity.class));
+                        Toast.makeText(getActivity(), "MedicineBox ", Toast.LENGTH_SHORT).show();
+                        ft.replace(R.id.body, new MedicineBox());
+                        ft.commit();
                         break;
                     case 1:
-                        startActivity(new Intent(getActivity(), MedicineActivity.class));
+                        Toast.makeText(getActivity(), "MedicineBox ", Toast.LENGTH_SHORT).show();
+                        ft.replace(R.id.body, new Medicines());
+                        ft.commit();
                         break;
                     case 2:
+                        Toast.makeText(getActivity(), "MedicineBox ", Toast.LENGTH_SHORT).show();
+                        ft.replace(R.id.body, new Appointments());
+                        ft.commit();
                         break;
                     case 3:
+                        Toast.makeText(getActivity(), "MedicineBox ", Toast.LENGTH_SHORT).show();
+                        ft.replace(R.id.body, new Measurements());
+                        ft.commit();
                         break;
                 }
+
             }
 
             @Override
@@ -108,7 +128,7 @@ public class NavigationDrawerFragment extends Fragment{
         List<Information> data = new ArrayList<>();
         int[] icons = {R.drawable.ic_number1,R.drawable.ic_number2,
                 R.drawable.ic_number3, R.drawable.ic_number4};
-        String[] titles = {"Medicine Box", "Medicines", "Appointments", "Measurements"};
+        String[] titles = {"Medicine Box", "Medicines", "App", "Meas"};
 
         for(int i=0;i<titles.length && i<icons.length;i++)
         {
