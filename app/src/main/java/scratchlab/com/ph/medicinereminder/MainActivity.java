@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         //home button as either icon or logo
-        /*
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        */
+
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         //object of the fragment, id of the fragment drawer is added here
         //MedicineBox mb = new MedicineBox();
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout)findViewById(R.id.activity_main), toolbar);
 
     }
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -69,6 +69,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-*/
 
 }
