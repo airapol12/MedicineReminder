@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout
-    android:background="#39CE10"
+    android:background="#7F5CB5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <!-- To include the toolbar -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_white_48dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tap the &quot;+&quot; to add Medicine"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:id="@+id/textView"
+        android:layout_gravity="center" />
+    <!-- To include the toolbar -->
     </FrameLayout>

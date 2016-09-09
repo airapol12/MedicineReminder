@@ -1,47 +1,42 @@
 package scratchlab.com.ph.medicinereminder;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.app.FragmentManager;
-import android.app.Fragment;
 
 import scratchlab.com.ph.medicinereminder.activities.SettingsActivity;
-import scratchlab.com.ph.medicinereminder.fragments.Measurements;
 import scratchlab.com.ph.medicinereminder.fragments.MedicineBox;
+import scratchlab.com.ph.medicinereminder.fragments.Medicines;
 import scratchlab.com.ph.medicinereminder.fragments.NavigationDrawerFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    //public FloatingActionButton fabBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //1
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //2
+
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        //home button as either icon or logo
-
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        //object of the fragment, id of the fragment drawer is added here
-        //MedicineBox mb = new MedicineBox();
 
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
-        getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout)findViewById(R.id.activity_main), toolbar);
+                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.activity_main), toolbar);
 
     }
 
@@ -58,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        //noinspection SimplifiableIfStatement
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
 
         switch (item.getItemId()){
         case R.id.action_settings:
@@ -69,5 +66,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+/*
+    public void showFloatingActionButton() {
+        fabBtn.show();
+    }
 
+    public void hideFloatingActionButton() {
+        fabBtn.hide();
+    }
+
+*/
 }

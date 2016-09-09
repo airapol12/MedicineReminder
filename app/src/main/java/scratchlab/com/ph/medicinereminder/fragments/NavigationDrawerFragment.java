@@ -1,6 +1,7 @@
 package scratchlab.com.ph.medicinereminder.fragments;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import scratchlab.com.ph.medicinereminder.MainActivity;
+import scratchlab.com.ph.medicinereminder.fragments.MedicineBox;
 import scratchlab.com.ph.medicinereminder.R;
 import scratchlab.com.ph.medicinereminder.adapters.ApolAdapter;
 import scratchlab.com.ph.medicinereminder.extras.Information;
@@ -43,6 +46,10 @@ public class NavigationDrawerFragment extends Fragment{
 
     private ApolAdapter adapter;
 
+    private String title;
+    private AppCompatActivity activity;
+    private ActionBar actionBar;
+
     //2 boolean variables to indicate whether the user is aware of the drawer being started
     //from the very first time or is coming back from a rotation
     private boolean mUserLearnedDrawer;
@@ -51,6 +58,8 @@ public class NavigationDrawerFragment extends Fragment{
     //variable for openDrawer
     private View containerView;
     private boolean isDrawerOpened=false;
+
+    public static String[] titles = {"Medicine Box", "Medicines", "Appointments", "Measurements"};
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -83,27 +92,21 @@ public class NavigationDrawerFragment extends Fragment{
             public void onClick(View view, int position) {
                 FragmentManager fm= getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                String title;
-                AppCompatActivity activity;
-                ActionBar actionBar;
 
                 switch (position){
                     case 0:
-                        title = "MedicineBox";
-                        activity = (AppCompatActivity)getActivity();
-                        actionBar = activity.getSupportActionBar();
-                        actionBar.setTitle(title);
+                        title = titles[0];
+                        loadFragment();
                         Toast.makeText(getActivity(), "MedicineBox ", Toast.LENGTH_SHORT).show();
                         ft.replace(R.id.body, new MedicineBox());
                         ft.commit();
 
                         mDrawerLayout.closeDrawers();
                         break;
+
                     case 1:
-                        title = "Medicines";
-                        activity = (AppCompatActivity)getActivity();
-                        actionBar = activity.getSupportActionBar();
-                        actionBar.setTitle(title);
+                        title = titles[1];
+                        loadFragment();
 
                         Toast.makeText(getActivity(), "Medicines ", Toast.LENGTH_SHORT).show();
                         ft.replace(R.id.body, new Medicines());
@@ -112,28 +115,32 @@ public class NavigationDrawerFragment extends Fragment{
                         mDrawerLayout.closeDrawers();
                         break;
                     case 2:
-                        title = "Appointments";
-                        activity = (AppCompatActivity)getActivity();
-                        actionBar = activity.getSupportActionBar();
-                        actionBar.setTitle(title);
+
+                        title = titles[2];
+                        loadFragment();
 
                         Toast.makeText(getActivity(), "Appointments ", Toast.LENGTH_SHORT).show();
                         ft.replace(R.id.body, new Appointments());
                         ft.commit();
 
                         mDrawerLayout.closeDrawers();
+//                        if (getActivity() instanceof MainActivity) {
+//                            ((MainActivity) getActivity()).hideFloatingActionButton();
+//                        }
+//                        ((MainActivity) getActivity()).hideFloatingActionButton();
+
                         break;
                     case 3:
-                        title = "Measurements";
-                        activity = (AppCompatActivity)getActivity();
-                        actionBar = activity.getSupportActionBar();
-                        actionBar.setTitle(title);
-
+                        title = titles[3];
+                        loadFragment();
                         Toast.makeText(getActivity(), "Measurements ", Toast.LENGTH_SHORT).show();
                         ft.replace(R.id.body, new Measurements());
                         ft.commit();
 
                         mDrawerLayout.closeDrawers();
+//                        if (getActivity() instanceof MainActivity) {
+//                            ((MainActivity) getActivity()).hideFloatingActionButton();}
+//                       ((MainActivity) getActivity()).hideFloatingActionButton();
                         break;
                 }
 
@@ -147,12 +154,16 @@ public class NavigationDrawerFragment extends Fragment{
         return layout;
     }
 
+    public void loadFragment(){
+        activity = (AppCompatActivity)getActivity();
+        actionBar = activity.getSupportActionBar();
+        actionBar.setTitle(title);
+    }
 
     public static List<Information> getData(){
         List<Information> data = new ArrayList<>();
         int[] icons = {R.drawable.ic_number1,R.drawable.ic_number2,
                 R.drawable.ic_number3, R.drawable.ic_number4};
-        String[] titles = {"Medicine Box", "Medicines", "Appointments", "Measurements"};
 
         for(int i=0;i<titles.length && i<icons.length;i++)
         {
@@ -274,6 +285,7 @@ public class NavigationDrawerFragment extends Fragment{
         @Override
         public void onTouchEvent(RecyclerView rv, MotionEvent e) {
             Log.d("APOL", "onTouchEvent "+e);
+
 
         }
 

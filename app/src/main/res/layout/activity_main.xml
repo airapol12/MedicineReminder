@@ -14,6 +14,7 @@
             android:layout_height="match_parent"
             android:name="scratchlab.com.ph.medicinereminder.fragments.MedicineBox"
             tools:layout="@layout/fragment_medicine_box" />
+
         <!-- To include the toolbar -->
         <include
             android:id="@+id/app_bar"
